@@ -5,7 +5,7 @@ class Piece:
     """
     Piece is a default superclass for all pieces to be built off of.
     """
-    def __init__(self, name: str, symbol: str, value: int, colour: str):
+    def __init__(self, name: str, symbol: str, value: int, colour: str, team_colours: List[str] = None):
         """
         Initialize superclass Piece.
 
@@ -13,11 +13,16 @@ class Piece:
         :param symbol: str
         :param value: int
         :param colour: str
+        :param team_colours: list(str)
         """
         self._name = name
         self._symbol = symbol
         self._value = value
         self._colour = colour
+        if team_colours is None:
+            self._team_colours = [colour]
+        else:
+            self._team_colours = team_colours
     
     def get_name(self) -> str:
         """

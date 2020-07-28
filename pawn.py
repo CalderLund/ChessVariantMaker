@@ -4,8 +4,8 @@ from board import Board
 
 
 class Pawn(Piece):
-    def __init__(self, direction: int, colour: str, moved: bool = False):
-        super().__init__("pawn", "P", 1, colour)
+    def __init__(self, direction: int, colour: str, team_colours: List[str] = None, moved: bool = False):
+        super().__init__("pawn", "P", 1, colour, team_colours)
         self._direction = direction
         self._moved = moved
 
