@@ -1,4 +1,4 @@
-from typing import Tuple, Union, List
+from typing import Tuple, Union, List, Any
 
 
 class Piece:
@@ -51,11 +51,12 @@ class Piece:
         """
         return self._colour
 
-    def valid_moves(self, position: Union[Tuple[int, int], str]) -> List[str]:
+    def valid_moves(self, position: Union[Tuple[int, int], str], board: Any) -> List[str]:
         """
         Returns an array of possible moves for the piece.
 
         :param position: (int, int) or str
+        :param board: Board
         :return: [str, ...]
 
         eg output ["E5", "F2", ...]

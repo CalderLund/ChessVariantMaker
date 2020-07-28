@@ -1,5 +1,6 @@
 from piece import Piece
 from typing import Tuple, Union, List
+from board import Board
 
 
 class Pawn(Piece):
@@ -8,12 +9,19 @@ class Pawn(Piece):
         self._direction = direction
         self._moved = moved
 
-    def valid_moves(self, position: Union[Tuple[int, int], str]) -> List[str]:
+    def valid_moves(self, position: Union[Tuple[int, int], str], board: Board) -> List[str]:
         # GENERAL IDEA
         # take in position
         # generate possible moves outwards from position until invalid
         # create a list of possible moves as you check them
         # return the moves
+
+        # TO CONSIDER
+        # Queening (Probably handled by board)
+        # En-passant
+        # captures
+        # first move
+
         """ EXAMPLE USE
         if board.valid_square((3, 2)):
             if board[3, 2].get_colour() != self._colour:

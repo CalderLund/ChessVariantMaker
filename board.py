@@ -11,10 +11,13 @@ class Board:
         """
         Creates a board of size height x width.
 
-        :param height: int
-        :param width: int
+        :param height: 0 < int <= MAX_HEIGHT
+        :param width: 0 < int <= MAX_WIDTH
         :param invalid_squares: list(str) or list((int, int))
         """
+
+        assert 0 < height <= MAX_HEIGHT
+        assert 0 < width <= MAX_WIDTH
 
         if invalid_squares is None:
             invalid_squares = []
