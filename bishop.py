@@ -6,7 +6,7 @@ from squares import EmptySquare
 
 class Bishop(Piece):
     def __init__(self, colour: str, team_colours: List[str] = None):
-        super().__init__("rook", "R", 5, colour, team_colours)
+        super().__init__("bishop", "B", 3, colour, team_colours)
 
     def valid_moves(self, position: Union[Tuple[int, int], str], board: Board) -> List[str]:
         valid = []
