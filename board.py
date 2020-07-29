@@ -1,5 +1,5 @@
 import numpy as np
-from constants import Positions
+from constants import Positions, MAX_HEIGHT, MAX_WIDTH
 from indexing import ChessIndexing as Idx
 from piece import Piece
 from squares import InvalidSquare, EmptySquare
@@ -7,7 +7,7 @@ from typing import Tuple, Union, Any
 
 
 class Board:
-    def __init__(self, height: int, width: int, invalid_squares: Positions = None):
+    def __init__(self, height: int = 8, width: int = 8, invalid_squares: Positions = None):
         """
         Creates a board of size height x width.
 
@@ -33,7 +33,7 @@ class Board:
                     self.__board[i, j] = EmptySquare()
 
     @staticmethod
-    def __translate_pos(pos: Union[Tuple[int, int], str]) -> Tuple[int, int]:
+    def translate_pos(pos: Union[Tuple[int, int], str]) -> Tuple[int, int]:
         """
         Static method for converting an chess position to python indexes.
 
@@ -46,6 +46,10 @@ class Board:
             i, j = pos[0], pos[1]
         else:
             raise TypeError("unknown type " + str(type(pos)) + " for key")
+
+        assert 0 <= i < MAX_HEIGHT
+        assert 0 <= j < MAX_WIDTH
+
         return i, j
 
     def __getitem__(self, pos: Union[Tuple[int, int], str]) -> Piece:
@@ -59,7 +63,7 @@ class Board:
         :param pos: (int, int) or str
         :return: Piece
         """
-        i, j = Board.__translate_pos(pos)
+        i, j = Board.translate_pos(pos)
         return self.__board[i, j]
 
     def __setitem__(self, pos: Union[Tuple[int, int], str], piece: Piece):
@@ -69,7 +73,7 @@ class Board:
         :param pos: (int, int) or str
         :param piece: Piece
         """
-        i, j = Board.__translate_pos(pos)
+        i, j = Board.translate_pos(pos)
         if isinstance(piece, Piece):
             self.__board[i, j] = piece
         else:
@@ -102,7 +106,7 @@ class Board:
         :param instance: any
         :return: bool
         """
-        i, j = Board.__translate_pos(pos)
+        i, j = Board.translate_pos(pos)
         return isinstance(self.__board[i, j], instance)
 
     def valid_square(self, pos: Union[Tuple[int, int], str]) -> bool:
@@ -114,7 +118,7 @@ class Board:
         """
         try:
             return not self.isinstance(pos, InvalidSquare)
-        except IndexError:
+        except (IndexError, AssertionError):
             return False
 
 
