@@ -1,4 +1,4 @@
-from piece import Piece
+from pieces.piece import Piece
 from typing import Tuple, Union, List
 from board import Board
 

@@ -1,8 +1,8 @@
 import numpy as np
 from constants import Positions, MAX_HEIGHT, MAX_WIDTH
 from indexing import ChessIndexing as Idx
-from piece import Piece
-from squares import InvalidSquare, EmptySquare
+from pieces.piece import Piece
+from pieces.squares import InvalidSquare, EmptySquare
 from typing import Tuple, Union, Any
 
 

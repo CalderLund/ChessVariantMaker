@@ -1,9 +1,9 @@
-from piece import Piece
+from pieces.piece import Piece
 from typing import Tuple, Union, List
 from board import Board
 
-from rook import Rook
-from bishop import Bishop
+from pieces.rook import Rook
+from pieces.bishop import Bishop
 
 
 class Queen(Piece):

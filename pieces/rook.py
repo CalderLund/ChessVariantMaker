@@ -1,7 +1,7 @@
-from piece import Piece
+from pieces.piece import Piece
 from typing import Tuple, Union, List
 from board import Board
-from squares import EmptySquare
+from pieces.squares import EmptySquare
 
 
 class Rook(Piece):
