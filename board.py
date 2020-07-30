@@ -82,7 +82,7 @@ class Board:
         else:
             raise TypeError("value must be a Piece")
         
-    def __str__(self) -> str:
+    def __str__(self, colours: bool = False) -> str:
         """
         Returns the string a board.
         """
@@ -93,8 +93,10 @@ class Board:
                 piece = self.__board[i, j]
                 if piece is None:
                     board += "  "
+                elif not colours or isinstance(piece, EmptySquare):
+                    board += str(piece) + " "
                 else:
-                    board += str(self.__board[i, j]) + " "
+                    board += piece.get_colour() + " "
             board += "|\n"
         board += " " + "-" * (self.__width*2 + 1)
         return board
