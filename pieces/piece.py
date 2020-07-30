@@ -66,7 +66,7 @@ class Piece:
 
         eg output ["E5", "F2", ...]
         """
-        pass
+        return []
 
     def __str__(self) -> str:
         """

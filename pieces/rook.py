@@ -21,6 +21,11 @@ class Rook(Piece):
             if not board.valid_square(pos) or \
                     (not isinstance(board[pos], EmptySquare) and board[pos].get_colour() in self._team_colours):
                 break
+            if board.valid_square(pos) and \
+                    not isinstance(board[pos], EmptySquare) and \
+                    board[pos].get_colour() not in self._team_colours:
+                valid.append(pos)
+                break
             valid.append(pos)
 
         # Check down
@@ -29,6 +34,11 @@ class Rook(Piece):
             pos = (pos[0]-1, pos[1])
             if not board.valid_square(pos) or \
                     (not isinstance(board[pos], EmptySquare) and board[pos].get_colour() in self._team_colours):
+                break
+            if board.valid_square(pos) and \
+                    not isinstance(board[pos], EmptySquare) and \
+                    board[pos].get_colour() not in self._team_colours:
+                valid.append(pos)
                 break
             valid.append(pos)
 
@@ -39,6 +49,11 @@ class Rook(Piece):
             if not board.valid_square(pos) or \
                     (not isinstance(board[pos], EmptySquare) and board[pos].get_colour() in self._team_colours):
                 break
+            if board.valid_square(pos) and \
+                    not isinstance(board[pos], EmptySquare) and \
+                    board[pos].get_colour() not in self._team_colours:
+                valid.append(pos)
+                break
             valid.append(pos)
 
         # Check left
@@ -47,6 +62,11 @@ class Rook(Piece):
             pos = (pos[0], pos[1]-1)
             if not board.valid_square(pos) or \
                     (not isinstance(board[pos], EmptySquare) and board[pos].get_colour() in self._team_colours):
+                break
+            if board.valid_square(pos) and \
+                    not isinstance(board[pos], EmptySquare) and \
+                    board[pos].get_colour() not in self._team_colours:
+                valid.append(pos)
                 break
             valid.append(pos)
 

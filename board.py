@@ -32,6 +32,22 @@ class Board:
                 else:
                     self.__board[i, j] = EmptySquare()
 
+    def get_height(self):
+        """
+        Returns the board's height.
+
+        :return: int
+        """
+        return self.__height
+
+    def get_width(self):
+        """
+        Returns the board's width.
+
+        :return: int
+        """
+        return self.__width
+
     @staticmethod
     def translate_pos(pos: Union[Tuple[int, int], str]) -> Tuple[int, int]:
         """
