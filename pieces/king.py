@@ -33,10 +33,6 @@ class King(Piece):
     def in_check(self, position: Union[Tuple[int, int], str], board: Board) -> bool:
         """
         Returns if the King at position is in check.
-
-        :param position: (int, int) or str
-        :param board: Board
-        :return: bool
         """
         position = Board.translate_pos(position)
         for i in range(board.get_height()):
