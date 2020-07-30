@@ -5,6 +5,9 @@ from pieces.squares import EmptySquare
 
 
 class Rook(Piece):
+    """
+    Rook is a Piece in chess.
+    """
     def __init__(self, colour: str, team_colours: List[str] = None):
         super().__init__("rook", "R", 5, colour, team_colours)
 

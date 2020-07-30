@@ -11,9 +11,9 @@ class Board:
         """
         Creates a board of size height x width.
 
-        :param height: 0 < int <= MAX_HEIGHT
-        :param width: 0 < int <= MAX_WIDTH
-        :param invalid_squares: list(str) or list((int, int))
+        Note:
+        0 < height <= MAX_HEIGHT
+        0 < width <= MAX_WIDTH
         """
 
         assert 0 < height <= MAX_HEIGHT
@@ -35,16 +35,12 @@ class Board:
     def get_height(self):
         """
         Returns the board's height.
-
-        :return: int
         """
         return self.__height
 
     def get_width(self):
         """
         Returns the board's width.
-
-        :return: int
         """
         return self.__width
 
@@ -52,9 +48,6 @@ class Board:
     def translate_pos(pos: Union[Tuple[int, int], str]) -> Tuple[int, int]:
         """
         Static method for converting an chess position to python indexes.
-
-        :param pos: (int, int) or str
-        :return: (int, int)
         """
         if isinstance(pos, str):
             i, j = Idx.chess_to_index(pos)
@@ -75,9 +68,6 @@ class Board:
         board = Board(...)
         board.__getitem__("E5") === board["E5"] -> item at E5
         board.__getitem__((3, 2)) === board[3, 2] -> item at (3, 2)
-
-        :param pos: (int, int) or str
-        :return: Piece
         """
         i, j = Board.translate_pos(pos)
         return self.__board[i, j]
@@ -85,9 +75,6 @@ class Board:
     def __setitem__(self, pos: Union[Tuple[int, int], str], piece: Piece):
         """
         Sets the Piece at pos.
-
-        :param pos: (int, int) or str
-        :param piece: Piece
         """
         i, j = Board.translate_pos(pos)
         if isinstance(piece, Piece):
@@ -98,8 +85,6 @@ class Board:
     def __str__(self) -> str:
         """
         Returns the string a board.
-
-        :return: str
         """
         board = " " + "-" * (self.__width*2 + 1) + "\n"
         for i in range(self.__height-1, -1, -1):
@@ -117,10 +102,6 @@ class Board:
     def isinstance(self, pos: Union[Tuple[int, int], str], instance: Any) -> bool:
         """
         Checks if the Piece at pos is of instance instance.
-
-        :param pos: (int, int) or str
-        :param instance: any
-        :return: bool
         """
         i, j = Board.translate_pos(pos)
         return isinstance(self.__board[i, j], instance)
@@ -128,9 +109,6 @@ class Board:
     def valid_square(self, pos: Union[Tuple[int, int], str]) -> bool:
         """
         Checks if the square at pos is valid.
-
-        :param pos: (int, int) or str
-        :return: bool
         """
         try:
             return not self.isinstance(pos, InvalidSquare)

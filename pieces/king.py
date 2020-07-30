@@ -6,6 +6,9 @@ from copy import deepcopy
 
 
 class King(Piece):
+    """
+    King is a Piece in chess.
+    """
     def __init__(self, colour: str, team_colours: List[str] = None):
         super().__init__("king", "K", 20, colour, team_colours)
 
@@ -57,7 +60,6 @@ if __name__ == "__main__":
     board["A1"] = Queen("black")
 
     assert board["E5"].in_check("E5", board)
-
 
     print(Board(invalid_squares = board["E4"].valid_moves("E4", board)))
     print(Board(invalid_squares = board["D5"].valid_moves("D5", board)))
