@@ -11,11 +11,11 @@ class Rook(Piece):
     def __init__(self, colour: str, team_colours: List[str] = None):
         super().__init__("rook", "R", 5, colour, team_colours)
 
-    def valid_moves(self, position: Union[Tuple[int, int], str], board: Board) -> List[str]:
+    def valid_moves(self, board: Board) -> List[str]:
         valid = []
 
         # Get position in tuple format
-        original_pos = Board.translate_pos(position)
+        original_pos = Board.translate_pos(self.position)
 
         # Check up
         pos = original_pos
@@ -85,4 +85,4 @@ if __name__ == "__main__":
     board["A8"] = Rook("black")
     board["H8"] = Rook("black")
 
-    print(board["A1"].valid_moves("A1", board))
+    print(Board(invalid_squares=board["A1"].valid_moves(board)))

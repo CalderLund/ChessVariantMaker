@@ -13,11 +13,11 @@ class Queen(Piece):
     def __init__(self, colour: str, team_colours: List[str] = None):
         super().__init__("queen", "Q", 9, colour, team_colours)
 
-    def valid_moves(self, position: Union[Tuple[int, int], str], board: Board) -> List[str]:
+    def valid_moves(self, board: Board) -> List[str]:
         valid = []
 
-        valid += Rook.valid_moves(self, position, board)
-        valid += Bishop.valid_moves(self, position, board)
+        valid += Rook.valid_moves(self, board)
+        valid += Bishop.valid_moves(self, board)
 
         return valid
 
@@ -25,10 +25,13 @@ class Queen(Piece):
 if __name__ == "__main__":
     board = Board()
 
-    board["A1"] = Queen("white")
-    board["H1"] = Queen("white")
+    q = Queen("W")
+    board["B2"] = q
+    board["H2"] = Queen("W")
 
-    board["A8"] = Queen("black")
-    board["H8"] = Queen("black")
+    board["B7"] = Queen("B")
+    board["H8"] = Queen("B")
 
-    print(board["A1"].valid_moves("A1", board))
+    print(board.__str__(colours=True))
+
+    print(Board(invalid_squares=q.valid_moves(board)))

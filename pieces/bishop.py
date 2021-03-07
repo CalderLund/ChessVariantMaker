@@ -11,11 +11,11 @@ class Bishop(Piece):
     def __init__(self, colour: str, team_colours: List[str] = None):
         super().__init__("bishop", "B", 3, colour, team_colours)
 
-    def valid_moves(self, position: Union[Tuple[int, int], str], board: Board) -> List[str]:
+    def valid_moves(self, board: Board) -> List[str]:
         valid = []
 
         # Get position in tuple format
-        original_pos = Board.translate_pos(position)
+        original_pos = Board.translate_pos(self.position)
 
         # Check up/right
         pos = original_pos
@@ -86,4 +86,5 @@ if __name__ == "__main__":
     board["A8"] = Bishop("black")
     board["H8"] = Bishop("black")
 
-    print(board["A1"].valid_moves("A1", board))
+    print(board["A1"].valid_moves(board))
+    print(board["H1"].valid_moves(board))

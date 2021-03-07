@@ -78,6 +78,8 @@ class Board:
         """
         i, j = Board.translate_pos(pos)
         if isinstance(piece, Piece):
+            print("Changing", piece, "position from", piece.position, "to", (i, j))
+            piece.position = (i, j)
             self.__board[i, j] = piece
         else:
             raise TypeError("value must be a Piece")

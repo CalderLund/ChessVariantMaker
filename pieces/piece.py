@@ -10,6 +10,8 @@ class Piece:
         self._symbol = symbol
         self._value = value
         self._colour = colour
+        self.position = "--"
+
         if team_colours is None:
             self._team_colours = [colour]
         else:
@@ -39,12 +41,14 @@ class Piece:
         """
         return self._colour
 
-    def valid_moves(self, position: Union[Tuple[int, int], str], board: Any) -> List[str]:
+    def valid_moves(self, board: Any) -> List[str]:
         """
         Returns an array of possible moves for the piece.
         eg. output ["E5", "F2", ...]
         """
         return []
+
+    def in_check(self, ):
 
     def __str__(self) -> str:
         """

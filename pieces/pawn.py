@@ -6,6 +6,9 @@ from pieces.squares import EmptySquare
 
 
 class Pawn(Piece):
+    """
+    Pawn is a Piece in chess.
+    """
     def __init__(self, direction: int, colour: str, team_colours: List[str] = None, moved: bool = False, enpassable = False):
         super().__init__("pawn", "P", 1, colour, team_colours)
         self._direction = direction
@@ -15,11 +18,11 @@ class Pawn(Piece):
     def get_enpassable(self):
         return self._enpassable
 
-    def valid_moves(self, position: Union[Tuple[int, int], str], board: Board) -> List[str]:
+    def valid_moves(self, board: Board) -> List[str]:
         valid = []
 
         # Get position in tuple format
-        original_pos = Board.translate_pos(position)
+        original_pos = Board.translate_pos(self.position)
         
         pos = original_pos
         # going up
@@ -121,11 +124,11 @@ if __name__ == "__main__":
     board["D3"] = Pawn(SOUTH, "N", moved=True)
 
     print(board.__str__(colours=True))
-    print("A6", "\n", Board(invalid_squares=board["A6"].valid_moves("A6", board)))
-    print("G7", "\n", Board(invalid_squares=board["G7"].valid_moves("G7", board)))
-    print("G5", "\n", Board(invalid_squares=board["G5"].valid_moves("G5", board)))
-    print("E2", "\n", Board(invalid_squares=board["E2"].valid_moves("E2", board)))
-    print("G4", "\n", Board(invalid_squares=board["G4"].valid_moves("G4", board)))
-    print("B4", "\n", Board(invalid_squares=board["B4"].valid_moves("B4", board)))
+    print("A6", "\n", Board(invalid_squares=board["A6"].valid_moves(board)))
+    print("G7", "\n", Board(invalid_squares=board["G7"].valid_moves(board)))
+    print("G5", "\n", Board(invalid_squares=board["G5"].valid_moves(board)))
+    print("E2", "\n", Board(invalid_squares=board["E2"].valid_moves(board)))
+    print("G4", "\n", Board(invalid_squares=board["G4"].valid_moves(board)))
+    print("B4", "\n", Board(invalid_squares=board["B4"].valid_moves(board)))
 
 
